@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "cron-spec"
   gem.homepage = "http://github.com/j0hnds/cron-spec"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Cron specification implementation"
+  gem.description = "Cron specification implementation"
   gem.email = "dave.sieh@nursinghomequality.com"
   gem.authors = ["Dave Sieh"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
