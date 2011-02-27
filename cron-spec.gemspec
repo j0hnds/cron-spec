@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "cron-spec.gemspec",
     "lib/cron-spec.rb",
     "lib/cron-spec/cron_specification.rb",
     "lib/cron-spec/cron_specification_factory.rb",
