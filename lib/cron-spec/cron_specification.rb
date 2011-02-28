@@ -1,4 +1,10 @@
 module CronSpec
+
+  ##
+  # Encapsulates the interpretation of a cron specification and 
+  # provides a method which determines if the specified time is effective
+  # with respect to the specification.
+  #
   class CronSpecification
 
     TimeMethods = [ :min, :hour, :day, :month, :wday ]
@@ -31,6 +37,35 @@ module CronSpec
 
     attr_reader :raw_specification
 
+    ##
+    # Constructs a new CronSpecification with a textual cron specificiation.
+    #
+    # A broad cron syntax is supported:
+    #
+    #  *    *    *    *    *      
+    #  -    -    -    -    -
+    #  |    |    |    |    |
+    #  |    |    |    |    +----- day of week (0 - 6) (Sunday=0)
+    #  |    |    |    +---------- month (1 - 12)
+    #  |    |    +--------------- day of month (1 - 31)
+    #  |    +-------------------- hour (0 - 23)
+    #  +------------------------- min (0 - 59)
+    #
+    # The following named entries can be used:
+    #
+    # * Day of week - sun, mon, tue, wed, thu, fri, sat
+    # * Month - jan feb mar apr may jun jul aug sep oct nov dec
+    #
+    # The following constructs are supported:
+    # 
+    # * Ranges are supported (e.g. 2-10 or mon-fri)
+    # * Multiple values are supported (e.g. 2,3,8 or mon,wed,fri)
+    # * Wildcards are supported (e.g. *)
+    # * Step values are supported (e.g. */4)
+    # * Combinations of all but wildcard are supported (e.g. 2,*/3,8-10)
+    #
+    # A single space is required between each group.
+    # 
     def initialize(raw_specification)
       raise "Must specify a cron specification" if raw_specification.nil?
 
@@ -47,7 +82,11 @@ module CronSpec
       @cron_values << parse_specification(specification[DOW], DowFactory.new)
     end
 
-        def is_specification_in_effect?(time=Time.now.in_time_zone(DISPLAY_TIME_ZONE))
+    ##
+    # Return true if the specified time falls within the definition of the
+    # CronSpecification. The parameter defaults to the current time.
+    #
+    def is_specification_in_effect?(time=Time.now)
       idx = 0
       test_results = @cron_values.collect do | cvalues |
         time_value = time.send(TimeMethods[idx])
