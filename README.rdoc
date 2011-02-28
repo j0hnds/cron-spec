@@ -14,8 +14,7 @@ each Friday between the hours of 8AM and 5PM indicating that there will be
 a maintenance that night. The developer could simply define a cron
 specification like '* 8-17 * * fri', then for each end-user request, check
 the current time against this specification to determine whether or not 
-to display the message. This specification is much more succinct than other
-- more explicit - types of filter specifications.
+to display the message. This specification is much more succinct than other - more explicit - types of filter specifications.
 
 == Installing
 
