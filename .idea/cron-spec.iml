@@ -35,6 +35,11 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] rcov (v0.9.8, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/rcov-0.9.8)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] git (v1.2.5, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/git-1.2.5)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.8.7, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/rake-0.8.7)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec (v2.1.0, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/rspec-2.1.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-core (v2.1.0, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/rspec-core-2.1.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] diff-lcs (v1.1.2, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/diff-lcs-1.1.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-mocks (v2.1.0, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/rspec-mocks-2.1.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-expectations (v2.1.0, /Users/dave/.rvm/gems/ruby-1.9.2-p0@rails3/gems/rspec-expectations-2.1.0)" level="application" />
   </component>
 </module>
 

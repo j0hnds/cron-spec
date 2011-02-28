@@ -1,6 +1,60 @@
-= cron-spec
+= cron-spec - Exposing the cron syntax as a time filter
 
-Description goes here.
+cron-spec provides the Ruby developer with a way to leverage the cron
+syntax to add flexible time filtering for his/her code.
+
+Most cron-aware people see the cron syntax as a way to fire off an activity 
+at a specific time/day/month, etc. There are a variety of tools out there
+that handle this sort of activity. cron-spec tries to address a different
+subset of problems. In particular, cron-spec allows the developer to ask if 
+a particular date/time is effective with respect to a cron specification.
+
+For example, a web application might want to display a message to the end-user
+each Friday between the hours of 8AM and 5PM indicating that there will be
+a maintenance that night. The developer could simply define a cron
+specification like '* 8-17 * * fri', then for each end-user request, check
+the current time against this specification to determine whether or not 
+to display the message. This specification is much more succinct than other
+- more explicit - types of filter specifications.
+
+== Installing
+
+Since cron-spec is a gem, installing is relatively straightforward:
+
+ gem install cron-spec
+
+== Usage
+
+To use a cron specification as a time filter simply construct a new
+specification, then ask if it is in effect.
+
+ cs = CronSpec::CronSpecification.new("* 8-17 * * fri")
+ cs.is_specification_in_effect?(Time.now) # => true/false
+
+cron-spec handles most - if not all - the standard cron syntax illustrated
+below:
+
+There are several special predefined values which can be used to substitute the CRON expression.
+ Entry                  Description     Equivalent To
+ @yearly (or @annually) Run once a year   0 0 1 1 *
+ @monthly               Run once a month  0 0 1 * *
+ @weekly                Run once a week   0 0 * * 0
+ @daily (or @midnight)  Run once a day    0 0 * * *
+ @hourly                Run once an hour  0 * * * *
+
+ *    *    *    *    *      
+ -    -    -    -    -
+ |    |    |    |    |
+ |    |    |    |    +----- day of week (0 - 6) (Sunday=0)
+ |    |    |    +---------- month (1 - 12)
+ |    |    +--------------- day of month (1 - 31)
+ |    +-------------------- hour (0 - 23)
+ +------------------------- min (0 - 59)
+
+The following named entries can be used:
+
+* Day of week - sun, mon, tue, wed, thu, fri, sat
+* Month - jan feb mar apr may jun jul aug sep oct nov dec
 
 == Contributing to cron-spec
  
